@@ -59,7 +59,7 @@
             <a href="https://github.com/JaredPotter/noaa-hrrr-smoke-api"
               >Laravel API</a
             >
-            - Hosted on Heroku
+            - Hosted on Heroku, mariaDb hosted on Digital Ocean
           </li>
           <li>
             <a href="https://github.com/JaredPotter/noaa-hrrr-smoke-vue-web-app"
