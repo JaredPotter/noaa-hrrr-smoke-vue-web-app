@@ -53,16 +53,19 @@
               href="https://github.com/JaredPotter/noaa-hrrr-smoke-video-generator"
               >NOAA HRRR Video Generator</a
             >
+            - Hosted on private Mac Server, Uploads videos to Firebase Storage
           </li>
           <li>
             <a href="https://github.com/JaredPotter/noaa-hrrr-smoke-api"
               >Laravel API</a
             >
+            - Hosted on Heroku
           </li>
           <li>
             <a href="https://github.com/JaredPotter/noaa-hrrr-smoke-vue-web-app"
               >Vue Web App</a
             >
+            - Hosted on Firebase
           </li>
         </ul>
       </div>
