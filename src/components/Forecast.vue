@@ -105,8 +105,8 @@ export default {
       try {
         this.isLoading = true;
         const response = await axios.get(
-          // 'https://noaa-hrrr-smoke-api.herokuapp.com/forecasts',
-          'http://localhost:8000/forecasts',
+          'https://noaa-hrrr-smoke-api.herokuapp.com/forecasts',
+          // 'http://localhost:8000/forecasts',
           {
             params: {
               area,

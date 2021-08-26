@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-// import Home from '../views/Home.vue';
 import Forecast from '../components/Forecast.vue';
 
 Vue.use(VueRouter);
