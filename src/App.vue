@@ -7,18 +7,17 @@
       <button @click="() => setMode('vi_smoke')">
         Vertically Integrated Smoke
       </button>
-      <button @click="() => setMode('sfc_visibility')">
-        Surface Visibility
-      </button>
     </div>
     <div v-if="mode === 'sfc_smoke'">
       <h3>Near Surface Smoke</h3>
       <div class="forecast-container">
         <Forecast
           v-for="forecast in forecasts"
-          :key="forecast.near_surface_smoke_video_url"
+          :key="forecast.near_surface_smoke_video_url_h264"
           :timestamp="forecast.timestamp"
-          :url="forecast.near_surface_smoke_video_url"
+          :vp9WebmUrl="forecast.near_surface_smoke_video_url_vp9"
+          :h265Mp4Url="forecast.near_surface_smoke_video_url_h265"
+          :h264Mp4Url="forecast.near_surface_smoke_video_url_h264"
         >
         </Forecast>
       </div>
@@ -28,26 +27,16 @@
       <div class="forecast-container">
         <Forecast
           v-for="forecast in forecasts"
-          :key="forecast.vertically_integrated_smoke_video_url"
+          :key="forecast.vertically_integrated_smoke_video_url_h264"
           :timestamp="forecast.timestamp"
-          :url="forecast.vertically_integrated_smoke_video_url"
+          :vp9WebmUrl="forecast.vertically_integrated_smoke_video_url_vp9"
+          :h265Mp4Url="forecast.vertically_integrated_smoke_video_url_h265"
+          :h264Mp4Url="forecast.vertically_integrated_smoke_video_url_h264"
         >
         </Forecast>
       </div>
     </div>
-    <div v-if="mode === 'sfc_visibility'">
-      <h3>Surface Visibility</h3>
-      <div class="forecast-container">
-        <Forecast
-          v-for="forecast in forecasts"
-          :key="forecast.surface_visibility_video_url"
-          :timestamp="forecast.timestamp"
-          :url="forecast.surface_visibility_video_url"
-        >
-        </Forecast>
-      </div>
-    </div>
-    <div v-if="isLoading">...LOADING...</div>
+    <div v-if="isLoading"><div class="lds-dual-ring"></div></div>
     <h2 v-if="!isLoading && forecasts.length === 0">
       No Forecasts Found! Let
       <a href="https://twitter.com/jaredpotter">Jared Know</a>
@@ -85,7 +74,6 @@
 // const CODE_TO_TYPE = {
 //   sfc_smoke: 'near-surface-smoke',
 //   vi_smoke: 'vertically-integrated-smoke',
-//   sfc_visibility: 'surface-visibility',
 // };
 import axios from 'axios';
 import moment from 'moment';
@@ -149,6 +137,31 @@ export default {
 .credit {
   .links-list {
     list-style: none;
+  }
+}
+
+.lds-dual-ring {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+.lds-dual-ring:after {
+  content: ' ';
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #41b883;
+  border-color: #41b883 transparent #41b883 transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
 </style>
