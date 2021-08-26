@@ -1,32 +1,190 @@
 <template>
   <div class="forecast-container">
-    <div class="date-time">
-      {{ timestamp }}
+    <div v-if="isLoading"><div class="lds-dual-ring"></div></div>
+    <h2 v-if="!isLoading && !currentForecast">
+      No Forecasts Found! Let
+      <a href="https://twitter.com/jaredpotter">Jared Know</a>
+    </h2>
+    <div v-if="currentForecast" class="current-forecast-container">
+      <button class="button" @click="() => setMode('sfc_smoke')">
+        Near Surface Smoke
+      </button>
+      <button class="button" @click="() => setMode('vi_smoke')">
+        Vertically Integrated Smoke
+      </button>
+      <div class="date-time">
+        {{ timestamp }}
+      </div>
+      <div v-if="mode === 'sfc_smoke'">
+        <h3>Near Surface Smoke</h3>
+        <div class="forecast-container">
+          <video
+            class="video-element"
+            :key="currentForecast.near_surface_smoke_video_url_vp9"
+            controls
+            loop
+            playsinline
+          >
+            <source
+              :src="currentForecast.near_surface_smoke_video_url_vp9"
+              type="video/webm"
+            />
+            <source
+              :src="currentForecast.near_surface_smoke_video_url_h265"
+              type="video/mp4"
+            />
+            <source
+              :src="currentForecast.near_surface_smoke_video_url_h264"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+      <div v-if="mode === 'vi_smoke'">
+        <h3>Vertically Integrated Smoke</h3>
+        <div class="forecast-container">
+          <video
+            class="video-element"
+            :key="currentForecast.vertically_integrated_smoke_video_url_vp9"
+            controls
+            loop
+            playsinline
+          >
+            <source
+              :src="currentForecast.vertically_integrated_smoke_video_url_vp9"
+              type="video/webm"
+            />
+            <source
+              :src="currentForecast.vertically_integrated_smoke_video_url_h265"
+              type="video/mp4"
+            />
+            <source
+              :src="currentForecast.vertically_integrated_smoke_video_url_h264"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
     </div>
-    <video class="video-element" controls loop playsinline>
-      <source :src="vp9WebmUrl" type="video/webm" />
-      <source :src="h265Mp4Url" type="video/mp4" />
-      <source :src="h264Mp4Url" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
+import moment from 'moment';
+
 export default {
+  data() {
+    return {
+      mode: 'sfc_smoke',
+      currentForecast: null,
+      isLoading: false,
+    };
+  },
+  watch: {
+    async $route() {
+      await this.fetchForecast();
+    },
+  },
+  async mounted() {
+    await this.fetchForecast();
+  },
+  methods: {
+    setMode(mode) {
+      this.mode = mode;
+    },
+    async fetchForecast() {
+      const area = this.$route.params.area;
+
+      if (!area) {
+        this.$router.push('/');
+      }
+
+      try {
+        this.isLoading = true;
+        const response = await axios.get(
+          // 'https://noaa-hrrr-smoke-api.herokuapp.com/forecasts',
+          'http://localhost:8000/forecasts',
+          {
+            params: {
+              area,
+            },
+          }
+        );
+
+        if (response.data.data.length === 0) {
+          alert('No forecast found for ' + area);
+          this.$router.push('/');
+        } else {
+          this.currentForecast = response.data.data[0];
+          this.currentForecast.timestamp = moment(
+            this.currentForecast.timestamp
+          ).format('dddd MMMM Do, h:mma');
+        }
+      } catch (error) {
+        this.isLoading = false;
+        console.log(error);
+        throw error;
+      }
+
+      this.isLoading = false;
+    },
+  },
   props: {
     timestamp: String,
-    vp9WebmUrl: String,
-    h265Mp4Url: String,
-    h264Mp4Url: String,
+    forecast: Object,
   },
 };
 </script>
 
 <style lang="scss">
 .forecast-container {
+  .button {
+    background-color: #4caf50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-right: 1rem;
+    cursor: pointer;
+  }
+
+  .button:hover {
+    opacity: 0.75;
+  }
+
   .video-element {
     width: 100%;
+  }
+}
+
+.lds-dual-ring {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+.lds-dual-ring:after {
+  content: ' ';
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #41b883;
+  border-color: #41b883 transparent #41b883 transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
 </style>
