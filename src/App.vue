@@ -34,6 +34,10 @@
             >
             - Hosted on Firebase
           </li>
+          <li>
+            Made possible thanks to many open source tools such as FFMPEG,
+            ImageMagik, and numerous npm packages
+          </li>
         </ul>
       </div>
     </div>
