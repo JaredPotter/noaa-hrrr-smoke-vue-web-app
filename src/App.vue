@@ -8,7 +8,9 @@
     <div class="nav-bar">
       <router-link to="/north-west">North West</router-link> |
       <router-link to="/utah">Utah</router-link> |
-      <router-link to="/colorado">Colorado</router-link>
+      <router-link to="/colorado">Colorado</router-link> |
+      <router-link to="/new-mexico">New Mexico</router-link> |
+      <router-link to="/united-states">United States</router-link>
     </div>
     <router-view />
     <div class="credit">
