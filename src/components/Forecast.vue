@@ -16,7 +16,7 @@
         {{ timestamp }}
       </div>
       <div v-if="mode === 'sfc_smoke'">
-        <h3>Near Surface Smoke</h3>
+        <h3>Near Surface Smoke - Latest Forecast</h3>
         <div class="forecast-container">
           <video
             class="video-element"
@@ -42,7 +42,7 @@
         </div>
       </div>
       <div v-if="mode === 'vi_smoke'">
-        <h3>Vertically Integrated Smoke</h3>
+        <h3>Vertically Integrated Smoke - Latest Forecast</h3>
         <div class="forecast-container">
           <video
             class="video-element"

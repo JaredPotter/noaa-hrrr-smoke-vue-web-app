@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
-    <h1>NOAA HRRR SMOKE FORECASTS</h1>
+    <h1>NOAA HRRR SMOKE 48-HOUR FORECASTS</h1>
     <div>
       Created by <a href="https://twitter.com/jaredpotter">Jared Potter</a>
     </div>
