@@ -2,17 +2,18 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
     <h1>NOAA HRRR SMOKE FORECASTS</h1>
+    <div>
+      Created by <a href="https://twitter.com/jaredpotter">Jared Potter</a>
+    </div>
     <div class="nav-bar">
+      <router-link to="/north-west">North West</router-link> |
       <router-link to="/utah">Utah</router-link> |
       <router-link to="/colorado">Colorado</router-link>
     </div>
     <router-view />
     <div class="credit">
       <div>
-        Created by <a href="https://twitter.com/jaredpotter">Jared Potter</a>
-      </div>
-      <div>
-        Code Found at:
+        Code (MIT License) Found at:
         <ul class="links-list">
           <li>
             <a
@@ -40,11 +41,6 @@
 </template>
 
 <script>
-// const CODE_TO_TYPE = {
-//   sfc_smoke: 'near-surface-smoke',
-//   vi_smoke: 'vertically-integrated-smoke',
-// };
-
 export default {
   name: 'App',
 };
