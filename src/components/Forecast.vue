@@ -27,15 +27,19 @@
             preload="metadata"
           >
             <source
-              :src="currentForecast.near_surface_smoke_video_url_vp9"
+              :src="currentForecast.near_surface_smoke_video_url_vp9 + '#t=0.1'"
               type="video/webm"
             />
             <source
-              :src="currentForecast.near_surface_smoke_video_url_h265"
+              :src="
+                currentForecast.near_surface_smoke_video_url_h265 + '#t=0.1'
+              "
               type="video/mp4"
             />
             <source
-              :src="currentForecast.near_surface_smoke_video_url_h264"
+              :src="
+                currentForecast.near_surface_smoke_video_url_h264 + '#t=0.1'
+              "
               type="video/mp4"
             />
             Your browser does not support the video tag.

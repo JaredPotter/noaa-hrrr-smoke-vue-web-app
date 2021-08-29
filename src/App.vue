@@ -66,6 +66,7 @@ export default {
   display: flex;
   justify-content: center;
   margin-bottom: 1rem;
+  align-items: center;
 
   a {
     margin: 0 0.5rem 0 0.5rem;
