@@ -63,6 +63,10 @@ export default {
   margin-top: 60px;
 }
 
+body {
+  margin: 0;
+}
+
 .nav-bar {
   display: flex;
   justify-content: center;
