@@ -38,7 +38,8 @@
           </li>
           <li>
             Made possible thanks to many open source tools such as FFMPEG,
-            ImageMagik, and numerous npm packages
+            ImageMagik, and many npm packages (@mapbox/blend, axios,
+            firebase-admin, fs-extra, moment, node-cron, and uuid)
           </li>
         </ul>
       </div>
