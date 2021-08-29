@@ -24,6 +24,7 @@
             controls
             loop
             playsinline
+            preload="metadata"
           >
             <source
               :src="currentForecast.near_surface_smoke_video_url_vp9"
