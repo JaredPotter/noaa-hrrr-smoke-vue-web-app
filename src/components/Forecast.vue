@@ -3,7 +3,7 @@
     <div v-if="isLoading"><div class="lds-dual-ring"></div></div>
     <h2 v-if="!isLoading && !currentForecast">
       No Forecasts Found! Let
-      <a href="https://twitter.com/jaredpotter">Jared Know</a>
+      <a href="https://twitter.com/jaredpotter">Jared</a> Know
     </h2>
     <div v-if="currentForecast" class="current-forecast-container">
       <button class="button" @click="() => setMode('sfc_smoke')">
@@ -60,21 +60,21 @@
             <source
               :src="
                 currentForecast.vertically_integrated_smoke_video_url_vp9 +
-                  '#t=0.1'
+                '#t=0.1'
               "
               type="video/webm"
             />
             <source
               :src="
                 currentForecast.vertically_integrated_smoke_video_url_h265 +
-                  '#t=0.1'
+                '#t=0.1'
               "
               type="video/mp4"
             />
             <source
               :src="
                 currentForecast.vertically_integrated_smoke_video_url_h264 +
-                  '#t=0.1'
+                '#t=0.1'
               "
               type="video/mp4"
             />
@@ -119,6 +119,7 @@ export default {
 
       try {
         this.isLoading = true;
+
         const response = await axios.get(
           'https://noaa-hrrr-smoke-api.herokuapp.com/forecasts',
           // 'http://localhost:8000/forecasts',
