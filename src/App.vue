@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
-    <h1>NOAA HRRR SMOKE 48-HOUR FORECASTS</h1>
+    <h1>SMOKE 48-HOUR FORECAST (NOAA HRRR)</h1>
     <div>
       Created by <a href="https://twitter.com/jaredpotter">Jared Potter</a>
     </div>
@@ -26,9 +26,9 @@
           </li>
           <li>
             <a href="https://github.com/JaredPotter/noaa-hrrr-smoke-api"
-              >Laravel API</a
+              >Firebase Firestore API</a
             >
-            - Hosted on Heroku, mariaDb hosted on Digital Ocean
+            - Hosted on Firebase
           </li>
           <li>
             <a href="https://github.com/JaredPotter/noaa-hrrr-smoke-vue-web-app"
@@ -38,7 +38,7 @@
           </li>
           <li>
             Made possible thanks to many open source tools such as FFMPEG,
-            ImageMagik, and many npm packages (@mapbox/blend, axios,
+            ImageMagik, and many npm packages (@mapbox/blend, axios, firebase,
             firebase-admin, fs-extra, moment, node-cron, and uuid)
           </li>
         </ul>

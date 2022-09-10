@@ -60,21 +60,21 @@
             <source
               :src="
                 currentForecast.vertically_integrated_smoke_video_url_vp9 +
-                '#t=0.1'
+                  '#t=0.1'
               "
               type="video/webm"
             />
             <source
               :src="
                 currentForecast.vertically_integrated_smoke_video_url_h265 +
-                '#t=0.1'
+                  '#t=0.1'
               "
               type="video/mp4"
             />
             <source
               :src="
                 currentForecast.vertically_integrated_smoke_video_url_h264 +
-                '#t=0.1'
+                  '#t=0.1'
               "
               type="video/mp4"
             />
@@ -87,8 +87,18 @@
 </template>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
 import moment from 'moment';
+import { app } from '../FirebaseService';
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  where,
+  query,
+} from 'firebase/firestore/lite';
+
+const db = getFirestore(app);
 
 export default {
   data() {
@@ -120,21 +130,22 @@ export default {
       try {
         this.isLoading = true;
 
-        const response = await axios.get(
-          'https://noaa-hrrr-smoke-api.herokuapp.com/forecasts',
-          // 'http://localhost:8000/forecasts',
-          {
-            params: {
-              area,
-            },
-          }
-        );
+        const forecastsCollectionRef = collection(db, 'forecasts');
+        const q = query(forecastsCollectionRef, where('areaCode', '==', area));
+        const querySnapshot = await getDocs(q);
 
-        if (response.data.data.length === 0) {
-          alert('No forecast found for ' + area);
+        const forecasts = [];
+
+        querySnapshot.forEach((doc) => {
+          console.log(doc.id, ' => ', doc.data());
+          forecasts.push(doc.data());
+        });
+
+        if (forecasts.length === 0) {
+          console.log('No forecast found for ' + area);
           this.$router.push('/');
         } else {
-          this.currentForecast = response.data.data[0];
+          this.currentForecast = forecasts[0];
           this.currentForecast.timestamp = moment(
             this.currentForecast.timestamp
           ).format('dddd MMMM Do, h:mma');

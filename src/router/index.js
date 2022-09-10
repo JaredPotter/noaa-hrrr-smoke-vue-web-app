@@ -7,7 +7,7 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '/',
-    redirect: '/united-states',
+    redirect: '/utah',
   },
   {
     path: '/:area',
