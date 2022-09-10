@@ -63,11 +63,11 @@ export default {
 
     setTimeout(() => {
       flames.forEach((flame) => {
-        // flame.style['animation-play-state'] = 'paus
+        flame.style['animation-play-state'] = 'pause';
         // flame.style['animation'] = '1.5s ease-out';
         // animation: flameeven 1.5s ease-in infinite;
       });
-    }, 2000);
+    }, 3000);
   },
 };
 </script>
@@ -106,7 +106,6 @@ body {
 .fire-container {
   width: 100%;
   display: flex;
-  // flex-direction: column;
   justify-content: center;
 }
 
