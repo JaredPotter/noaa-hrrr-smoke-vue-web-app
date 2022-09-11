@@ -1,14 +1,17 @@
 <template>
   <div id="app">
-    <h1>🔥 48-HOUR SMOKE FORECAST 🔥</h1>
-    <h3>(NOAA HRRR)</h3>
+    <h2>🔥 48-HOUR SMOKE FORECAST 🔥</h2>
+
+    <router-view />
     <div class="nav-bar">
       <router-link to="/north-west">North West</router-link> |
       <router-link to="/utah">Utah</router-link> |
       <router-link to="/united-states">United States</router-link>
     </div>
-
-    <router-view />
+    <h3>
+      Data Sourced from
+      <a href="https://rapidrefresh.noaa.gov/hrrr/HRRRsmoke/">NOAA HRRR</a>
+    </h3>
     <div>
       Created by <a href="https://twitter.com/jaredpotter">Jared Potter</a>
     </div>
@@ -55,8 +58,6 @@ export default {
     setTimeout(() => {
       flames.forEach((flame) => {
         flame.style['animation-play-state'] = 'pause';
-        // flame.style['animation'] = '1.5s ease-out';
-        // animation: flameeven 1.5s ease-in infinite;
       });
     }, 3000);
   },

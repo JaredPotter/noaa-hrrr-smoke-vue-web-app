@@ -34,7 +34,6 @@
         Latest Forecast - Last Updated {{ timeAgo }} (updates every ~6 hours)
       </h3>
       <div v-if="mode === 'sfc_smoke' && !isLoading">
-        <h3>Near Surface Smoke</h3>
         <div class="forecast-container">
           <video
             class="video-element"
@@ -65,7 +64,6 @@
         </div>
       </div>
       <div v-if="mode === 'vi_smoke' && !isLoading">
-        <h3>Vertically Integrated Smoke</h3>
         <div class="forecast-container">
           <video
             class="video-element"
