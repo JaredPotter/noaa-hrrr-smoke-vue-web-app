@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-    <h2>🔥 48-HOUR SMOKE FORECAST 🔥</h2>
-
+    <div class="title">🔥 48-HOUR SMOKE FORECAST 🔥</div>
     <router-view />
     <div class="nav-bar">
       <router-link to="/north-west">North West</router-link> |
@@ -92,6 +91,18 @@ body {
 .credit {
   .links-list {
     list-style: none;
+  }
+}
+
+.title {
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+@media (min-width: 750px) {
+  .title {
+    font-size: 3em;
+    font-weight: bold;
   }
 }
 </style>
