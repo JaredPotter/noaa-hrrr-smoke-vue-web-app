@@ -84,20 +84,22 @@
           </video>
         </div>
       </div>
-      <button
-        class="button"
-        :class="{ 'button-selected button': mode === 'sfc_smoke' }"
-        @click="() => setMode('sfc_smoke')"
-      >
-        Near Surface Smoke
-      </button>
-      <button
-        class="button"
-        :class="{ 'button-selected button': mode === 'vi_smoke' }"
-        @click="() => setMode('vi_smoke')"
-      >
-        Vertically Integrated Smoke
-      </button>
+      <div class="button-container">
+        <button
+          class="button"
+          :class="{ 'button-selected button': mode === 'sfc_smoke' }"
+          @click="() => setMode('sfc_smoke')"
+        >
+          Near Surface Smoke
+        </button>
+        <button
+          class="button"
+          :class="{ 'button-selected button': mode === 'vi_smoke' }"
+          @click="() => setMode('vi_smoke')"
+        >
+          Vertically Integrated Smoke
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -174,7 +176,6 @@ export default {
           this.formattedTimestamp = momentTimestamp.format(
             'yyyy dddd MMMM Do, h:mma'
           );
-          // this.timeAgo = new moment(this.currentForecast.timestamp).fromNow();
           this.timeAgo = momentTimestamp.fromNow();
         }
       } catch (error) {
@@ -197,27 +198,32 @@ export default {
 
 <style lang="scss">
 .forecast-container {
-  .button {
-    background-color: #4caf50; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin-right: 1rem;
-    cursor: pointer;
-  }
+  .button-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
 
-  .button-selected {
-    transform: scale(0.98);
-    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
-    opacity: 0.75;
-  }
+    .button {
+      background-color: #4caf50; /* Green */
+      border: none;
+      color: white;
+      padding: 15px 28px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      cursor: pointer;
+    }
 
-  .button:hover {
-    opacity: 0.75;
+    .button-selected {
+      transform: scale(0.98);
+      box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+      opacity: 0.75;
+    }
+
+    .button:hover {
+      opacity: 0.75;
+    }
   }
 
   .video-element {
