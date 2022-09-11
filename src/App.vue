@@ -91,6 +91,7 @@ body {
 .credit {
   .links-list {
     list-style: none;
+    padding: 0;
   }
 }
 
