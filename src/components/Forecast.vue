@@ -16,20 +16,6 @@
       <a href="https://twitter.com/jaredpotter">Jared</a> Know
     </h2>
     <div v-if="currentForecast" class="current-forecast-container">
-      <button
-        class="button"
-        :class="{ 'button-selected button': mode === 'sfc_smoke' }"
-        @click="() => setMode('sfc_smoke')"
-      >
-        Near Surface Smoke
-      </button>
-      <button
-        class="button"
-        :class="{ 'button-selected button': mode === 'vi_smoke' }"
-        @click="() => setMode('vi_smoke')"
-      >
-        Vertically Integrated Smoke
-      </button>
       <h3>
         Latest Forecast - Last Updated {{ timeAgo }} (updates every ~6 hours)
       </h3>
@@ -98,6 +84,20 @@
           </video>
         </div>
       </div>
+      <button
+        class="button"
+        :class="{ 'button-selected button': mode === 'sfc_smoke' }"
+        @click="() => setMode('sfc_smoke')"
+      >
+        Near Surface Smoke
+      </button>
+      <button
+        class="button"
+        :class="{ 'button-selected button': mode === 'vi_smoke' }"
+        @click="() => setMode('vi_smoke')"
+      >
+        Vertically Integrated Smoke
+      </button>
     </div>
   </div>
 </template>
