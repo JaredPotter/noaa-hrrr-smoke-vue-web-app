@@ -16,9 +16,7 @@
       <a href="https://twitter.com/jaredpotter">Jared</a> Know
     </h2>
     <div v-if="currentForecast" class="current-forecast-container">
-      <h3>
-        Latest Forecast - Last Updated {{ timeAgo }} (updates every ~6 hours)
-      </h3>
+      <h3>Latest Forecast - Last Updated {{ timeAgo }}</h3>
       <div v-if="mode === 'sfc_smoke' && !isLoading">
         <div class="forecast-container">
           <video
